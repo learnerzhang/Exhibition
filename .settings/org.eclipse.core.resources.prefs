@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/view/user/user_base.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/user/user_center.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/user/user_review.jsp=UTF-8
+encoding//WebContent/resources/i18n/ApplicationResources_zh.properties=UTF-8
