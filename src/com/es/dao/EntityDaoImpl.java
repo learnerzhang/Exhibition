@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -61,7 +62,9 @@ public class EntityDaoImpl extends HibernateDaoSupport implements EntityDao {
 	public void delete(final Object model) {
 		getHibernateTemplate().execute(new HibernateCallback<Object>() {
 			public Object doInHibernate(org.hibernate.Session session) throws org.hibernate.HibernateException {
+				Transaction tx = session.beginTransaction();
 				session.delete(model);
+				tx.commit();
 				return null;
 			}
 		});

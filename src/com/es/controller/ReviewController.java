@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.es.model.Image;
 import com.es.model.Page;
 import com.es.model.Review;
 import com.es.model.User;
@@ -119,6 +120,10 @@ public class ReviewController{
 			review.setStatus("del");//0 待审核,1通过审核,2 del;
 			
 			reviewService.updateReview(review);
+			List<Object> images = imageService.getImages(id);
+			for (Object object : images) {
+				imageService.deleteImage((Image)object);
+			}
 			
 			User user = userService.getUserByField("username", username);
 			user.setReview(user.getReview()-1);
